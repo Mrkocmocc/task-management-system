@@ -11,8 +11,6 @@ import com.example.task_management_system.entity.TaskPriority;
 import com.example.task_management_system.entity.TaskStatus;
 import com.example.task_management_system.entity.User;
 
-import jakarta.annotation.Nonnull;
-
 public interface TaskRepository extends JpaRepository<Task, Long> {
         Page<Task> findAll(Pageable pageable);
 

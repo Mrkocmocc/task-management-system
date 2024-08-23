@@ -21,6 +21,8 @@ import com.example.task_management_system.mapping.TaskMapping;
 import com.example.task_management_system.mapping.UserMapping;
 import com.example.task_management_system.repositories.TaskRepository;
 
+import jakarta.transaction.Transactional;
+
 import java.security.Principal;
 
 import java.util.List;
@@ -121,6 +123,7 @@ public class TaskService {
         return ResponseEntity.status(HttpStatus.CREATED).body(TaskMapping.INSTANCE.taskToTaskDto(newTask));
     }
 
+    @Transactional
     public ResponseEntity<?> deleteTask(@RequestBody Long id, Principal principal) {
         Optional<Task> taskOptional = taskRepository.findById(id);
         if (taskOptional.isEmpty()) {
@@ -132,6 +135,7 @@ public class TaskService {
                     new AppError(HttpStatus.FORBIDDEN.value(), "You are not allowed to delete this task"),
                     HttpStatus.FORBIDDEN);
         }
+        commentRetrievalService.deleteAllByTaskId(id);
         taskRepository.deleteById(id);
         return ResponseEntity.status(HttpStatus.PAYMENT_REQUIRED).body("Task deleted successfully");
     }

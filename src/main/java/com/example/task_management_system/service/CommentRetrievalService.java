@@ -17,4 +17,8 @@ public class CommentRetrievalService {
     public List<Comment> findAllByTaskId(Long taskId) {
         return commentRepository.findAllByTaskId(taskId);
     }
+
+    public void deleteAllByTaskId(Long taskId) {
+        commentRepository.deleteAllByTaskId(taskId);
+    }
 }

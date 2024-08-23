@@ -15,6 +15,8 @@
 #### Установка и запуск
 1. **Клонирование репозитория**: ```git clone https://github.com/Mrkocmocc/task-management-system```
 
+2. **Сбор проекта**: ```mvn clean package```
+
 2. **Запуск контейнера** ```docker-compose up --build```
 
 #### Доступ к API документации
