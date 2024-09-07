@@ -54,7 +54,7 @@ public class AuthService {
             return new ResponseEntity<>(new AppError(HttpStatus.BAD_REQUEST.value(), "Invalid email"),
                     HttpStatus.BAD_REQUEST);
         }
-        
+
         User user = userService.createNewUser(registrationUserDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(new UserDto(user.getId(), user.getEmail()));
     }

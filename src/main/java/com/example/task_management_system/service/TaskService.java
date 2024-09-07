@@ -162,6 +162,7 @@ public class TaskService {
         return ResponseEntity.ok(taskOptional.get());
     }
 
+    @Transactional
     public ResponseEntity<?> updateTask(@RequestBody Long taskId, UpdateTaskDto updateTaskDto, Principal principal) {
         Optional<Task> taskOptional = taskRepository.findById(taskId);
         if (taskOptional.isEmpty()) {

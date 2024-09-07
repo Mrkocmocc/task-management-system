@@ -1,8 +1,10 @@
 package com.example.task_management_system.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class CreateCommentDto {
     private String text;
 }
